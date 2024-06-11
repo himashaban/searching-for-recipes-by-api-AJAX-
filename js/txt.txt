@@ -1,0 +1,57 @@
+var myHttp=new XMLHttpRequest;
+myHttp.open("GET", "https://forkify-api.herokuapp.com/api/search?q=pizza");
+myHttp.send();
+var allprod=[];
+
+myHttp.addEventListener('load',function(){
+
+  allprod=JSON.parse(myHttp.response).recipes;
+  console.log(allprod);
+  displaydata();
+
+
+})
+ function displaydata(){
+  var cartoona=``;
+  for(var i=0;i<allprod.length;i++){
+    cartoona+=`
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+    <div class="card">
+    <img src="${allprod[i].image_url}" class="card-img-top" alt="...">
+    <div class="card-body">
+    <h5 class="card-title">${allprod[i].title}</h5>
+    <p class="card-text">${allprod[i].publisher}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    </div>
+    </div>
+    `
+  }
+  document.getElementById('rowData').innerHTML=cartoona;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// https://forkify-api.herokuapp.com/api/search?q=pizza
