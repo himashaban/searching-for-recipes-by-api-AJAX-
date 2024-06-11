@@ -53,7 +53,7 @@ async function searching(){
     var searchvalue=e.target.value;
     console.log(searchvalue);
     getRecipes(searchvalue);
-})w
+})
 }
 searching();
 
